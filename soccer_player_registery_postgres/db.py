@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import psycopg2
 from flask import json
-import config as cfg
+import postgres_config as cfg
 
 Base = declarative_base()
 

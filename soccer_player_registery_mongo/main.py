@@ -2,10 +2,10 @@ from flask import Flask, json
 from flask_restful import Resource, Api, reqparse
 import pymongo
 from bson import json_util
-import maindb
+import mongo_config
 import os
 
-connectionString = maindb.connection_string
+connectionString = mongo_config.connection_string
 client = pymongo.MongoClient(connectionString)
 
 app = Flask(__name__)

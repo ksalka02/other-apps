@@ -2,8 +2,9 @@ FROM python:3.11.7-slim
 
 WORKDIR /code
 
-COPY ./players.py /code/players.py
-COPY ./maindb.py /code/maindb.py
+COPY ./postgres_config.py /code/postgres_config.py
+COPY ./db.py /code/db.py
+COPY ./main.py /code/main.py
 COPY ./requirements.txt /code/requirements.txt
 
 RUN pip3 install --no-cache-dir --upgrade -r /code/requirements.txt
@@ -20,11 +21,6 @@ RUN chown -R 1000:1000 /code
 
 USER $USERNAME
 
-CMD ["python3", "./players.py"]
-# CMD ["python3", "./players.py", "--host", "0.0.0.0", "--port", "5000"]
-# CMD ["python3", "./players.py", "--host", "0.0.0.0", "--port", "5000", "3000"]
-
-# CMD ["sleep", "6000"]
-
+CMD ["python3", "./main.py"]
 
 # How does docker work with no credential issues on ec2?? locally it needs the .aws file.

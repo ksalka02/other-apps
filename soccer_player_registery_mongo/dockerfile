@@ -2,9 +2,8 @@ FROM python:3.11.7-slim
 
 WORKDIR /code
 
-COPY ./config.py /code/config.py
-COPY ./db.py /code/db.py
 COPY ./main.py /code/main.py
+COPY ./mongo_config.py /code/mongo_config.py
 COPY ./requirements.txt /code/requirements.txt
 
 RUN pip3 install --no-cache-dir --upgrade -r /code/requirements.txt
@@ -22,5 +21,10 @@ RUN chown -R 1000:1000 /code
 USER $USERNAME
 
 CMD ["python3", "./main.py"]
+# CMD ["python3", "./players.py", "--host", "0.0.0.0", "--port", "5000"]
+# CMD ["python3", "./players.py", "--host", "0.0.0.0", "--port", "5000", "3000"]
+
+# CMD ["sleep", "6000"]
+
 
 # How does docker work with no credential issues on ec2?? locally it needs the .aws file.
